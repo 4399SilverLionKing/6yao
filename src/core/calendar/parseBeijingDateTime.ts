@@ -1,17 +1,17 @@
-import type { BeijingDateTimeParts } from "./types";
+import type { BeijingDateTimeParts } from './types';
 
 const DATETIME_PATTERN =
   /^(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})T(?<hour>\d{2}):(?<minute>\d{2})$/;
 
 export function parseBeijingDateTime(input: string): BeijingDateTimeParts {
   if (!input) {
-    throw new Error("Datetime is required.");
+    throw new Error('Datetime is required.');
   }
 
   const match = DATETIME_PATTERN.exec(input);
 
   if (!match?.groups) {
-    throw new Error("Invalid datetime format.");
+    throw new Error('Invalid datetime format.');
   }
 
   const parts = {
@@ -19,7 +19,7 @@ export function parseBeijingDateTime(input: string): BeijingDateTimeParts {
     month: Number(match.groups.month),
     day: Number(match.groups.day),
     hour: Number(match.groups.hour),
-    minute: Number(match.groups.minute)
+    minute: Number(match.groups.minute),
   };
 
   if (
@@ -29,7 +29,7 @@ export function parseBeijingDateTime(input: string): BeijingDateTimeParts {
     Number.isNaN(parts.hour) ||
     Number.isNaN(parts.minute)
   ) {
-    throw new Error("Invalid datetime value.");
+    throw new Error('Invalid datetime value.');
   }
 
   if (
@@ -42,9 +42,8 @@ export function parseBeijingDateTime(input: string): BeijingDateTimeParts {
     parts.minute < 0 ||
     parts.minute > 59
   ) {
-    throw new Error("Invalid datetime value.");
+    throw new Error('Invalid datetime value.');
   }
 
   return parts;
 }
-

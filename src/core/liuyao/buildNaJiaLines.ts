@@ -1,5 +1,9 @@
-import { BRANCH_ELEMENTS, TRIGRAM_NA_JIA, type BranchElement } from "../../data/zengshan/naJia";
-import type { HexagramInstance } from "../../types/hexagram";
+import {
+  BRANCH_ELEMENTS,
+  type BranchElement,
+  TRIGRAM_NA_JIA,
+} from '../../data/zengshan/naJia';
+import type { HexagramInstance } from '../../types/hexagram';
 
 export interface NaJiaLine {
   position: number;
@@ -22,7 +26,7 @@ export function buildNaJiaLines(hexagram: HexagramInstance): NaJiaLine[] {
     stem: lowerConfig.lowerStem,
     branch,
     element: BRANCH_ELEMENTS[branch],
-    ganzhi: `${lowerConfig.lowerStem}${branch}`
+    ganzhi: `${lowerConfig.lowerStem}${branch}`,
   }));
 
   const upperLines = upperConfig.upperBranches.map((branch, index) => ({
@@ -30,9 +34,8 @@ export function buildNaJiaLines(hexagram: HexagramInstance): NaJiaLine[] {
     stem: upperConfig.upperStem,
     branch,
     element: BRANCH_ELEMENTS[branch],
-    ganzhi: `${upperConfig.upperStem}${branch}`
+    ganzhi: `${upperConfig.upperStem}${branch}`,
   }));
 
   return [...lowerLines, ...upperLines];
 }
-

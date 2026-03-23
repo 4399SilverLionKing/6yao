@@ -1,4 +1,4 @@
-import { DAY_STEM_SIX_SPIRITS } from "../../data/zengshan/sixSpirits";
+import { DAY_STEM_SIX_SPIRITS } from '../../data/zengshan/sixSpirits';
 
 export function getFormalSixSpirits(dayGanzhi: string) {
   const dayStem = dayGanzhi.charAt(0);
@@ -10,4 +10,3 @@ export function getFormalSixSpirits(dayGanzhi: string) {
 
   return spirits;
 }
-

@@ -1,9 +1,9 @@
-import { HIDDEN_RELATION_ORDER } from "../../data/zengshan/fuShen";
-import { buildHexagram } from "../hexagram/buildHexagram";
-import type { HexagramInstance } from "../../types/hexagram";
-import { buildNaJiaLines } from "./buildNaJiaLines";
-import { getFormalSixRelations } from "./getFormalSixRelations";
-import { resolvePalaceInfo } from "./getFormalShiYing";
+import { HIDDEN_RELATION_ORDER } from '../../data/zengshan/fuShen';
+import type { HexagramInstance } from '../../types/hexagram';
+import { buildHexagram } from '../hexagram/buildHexagram';
+import { buildNaJiaLines } from './buildNaJiaLines';
+import { resolvePalaceInfo } from './getFormalShiYing';
+import { getFormalSixRelations } from './getFormalSixRelations';
 
 export interface HiddenLine {
   position: number;
@@ -26,12 +26,12 @@ export function buildHiddenLines(hexagram: HexagramInstance): HiddenLine[] {
   return pureNaJiaLines
     .map((line, index) => ({
       ...line,
-      relation: pureRelations[index]
+      relation: pureRelations[index],
     }))
     .filter(
-      (line) =>
-        HIDDEN_RELATION_ORDER.includes(line.relation as (typeof HIDDEN_RELATION_ORDER)[number]) &&
-        !actualRelations.has(line.relation)
+      line =>
+        HIDDEN_RELATION_ORDER.includes(
+          line.relation as (typeof HIDDEN_RELATION_ORDER)[number]
+        ) && !actualRelations.has(line.relation)
     );
 }
-

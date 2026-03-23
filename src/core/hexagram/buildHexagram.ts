@@ -1,19 +1,19 @@
-import { HEXAGRAM_BY_ID } from "../../data/hexagrams";
-import { TRIGRAM_BY_ID, findTrigramByLines } from "../../data/trigrams";
-import type { NormalizedLine } from "../../types/divination";
-import type { HexagramInstance } from "../../types/hexagram";
+import { HEXAGRAM_BY_ID } from '../../data/hexagrams';
+import { TRIGRAM_BY_ID, findTrigramByLines } from '../../data/trigrams';
+import type { NormalizedLine } from '../../types/divination';
+import type { HexagramInstance } from '../../types/hexagram';
 
 function toTrigramLines(lines: NormalizedLine[], start: number) {
   return [
     lines[start].polarity,
     lines[start + 1].polarity,
-    lines[start + 2].polarity
+    lines[start + 2].polarity,
   ] as const;
 }
 
 export function buildHexagram(lines: NormalizedLine[]): HexagramInstance {
   if (lines.length !== 6) {
-    throw new Error("A hexagram requires exactly six normalized lines.");
+    throw new Error('A hexagram requires exactly six normalized lines.');
   }
 
   const lowerTrigram = findTrigramByLines(toTrigramLines(lines, 0));
@@ -29,7 +29,6 @@ export function buildHexagram(lines: NormalizedLine[]): HexagramInstance {
     ...definition,
     upperTrigram: TRIGRAM_BY_ID[definition.upperTrigramId],
     lowerTrigram: TRIGRAM_BY_ID[definition.lowerTrigramId],
-    normalizedLines: lines
+    normalizedLines: lines,
   };
 }
-

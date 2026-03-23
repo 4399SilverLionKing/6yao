@@ -1,6 +1,6 @@
-import type { ChartResult } from "../types/chartResult";
+import type { ChartResult } from '../types/chartResult';
 
-const STORAGE_KEY = "liuyao.chart.result";
+const STORAGE_KEY = 'liuyao.chart.result';
 
 let cachedResult: ChartResult | null = null;
 

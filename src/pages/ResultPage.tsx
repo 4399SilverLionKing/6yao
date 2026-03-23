@@ -1,8 +1,8 @@
-import { ErrorState } from "../components/result/ErrorState";
-import { HexagramCard } from "../components/result/HexagramCard";
-import { LineTable } from "../components/result/LineTable";
-import { ResultSummary } from "../components/result/ResultSummary";
-import { loadResult } from "../lib/resultStore";
+import { ErrorState } from '../components/result/ErrorState';
+import { HexagramCard } from '../components/result/HexagramCard';
+import { LineTable } from '../components/result/LineTable';
+import { ResultSummary } from '../components/result/ResultSummary';
+import { loadResult } from '../lib/resultStore';
 
 export function ResultPage() {
   const result = loadResult();

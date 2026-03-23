@@ -1,16 +1,16 @@
-import { buildCalendarContext } from "../calendar/buildCalendarContext";
-import { normalizeCastInput } from "../divination/normalizeCastInput";
-import { buildChangedHexagram } from "../hexagram/buildChangedHexagram";
-import { buildHexagram } from "../hexagram/buildHexagram";
-import { getMovingLines } from "../hexagram/getMovingLines";
+import type { ChartResult } from '../../types/chartResult';
+import { buildCalendarContext } from '../calendar/buildCalendarContext';
+import { normalizeCastInput } from '../divination/normalizeCastInput';
+import { buildChangedHexagram } from '../hexagram/buildChangedHexagram';
+import { buildHexagram } from '../hexagram/buildHexagram';
+import { getMovingLines } from '../hexagram/getMovingLines';
 import {
   buildHiddenLines,
   buildNaJiaLines,
   getFormalShiYing,
   getFormalSixRelations,
-  getFormalSixSpirits
-} from "../liuyao";
-import type { ChartResult } from "../../types/chartResult";
+  getFormalSixSpirits,
+} from '../liuyao';
 
 export interface ComputeChartInput {
   throws: readonly number[];
@@ -47,14 +47,14 @@ export function computeChartResult(input: ComputeChartInput): ChartResult {
       relation: sixRelations[index],
       spirit: sixSpirits[index],
       isShi: shiYing.shi === index + 1,
-      isYing: shiYing.ying === index + 1
+      isYing: shiYing.ying === index + 1,
     })),
     hiddenLines,
     sixRelations,
     sixSpirits,
     shiYing,
     meta: {
-      generatedAt: new Date().toISOString()
-    }
+      generatedAt: new Date().toISOString(),
+    },
   };
 }

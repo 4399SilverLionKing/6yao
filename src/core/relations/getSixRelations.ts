@@ -1,7 +1,11 @@
-import { FIVE_ELEMENT_CONTROLS, FIVE_ELEMENT_GENERATES, RELATION_LABELS } from "../../data/sixRelations";
-import type { HexagramInstance } from "../../types/hexagram";
+import {
+  FIVE_ELEMENT_CONTROLS,
+  FIVE_ELEMENT_GENERATES,
+  RELATION_LABELS,
+} from '../../data/sixRelations';
+import type { HexagramInstance } from '../../types/hexagram';
 
-type Element = HexagramInstance["lowerTrigram"]["element"];
+type Element = HexagramInstance['lowerTrigram']['element'];
 
 function resolveRelation(selfElement: Element, targetElement: Element) {
   if (selfElement === targetElement) {
@@ -33,4 +37,3 @@ export function getSixRelations(hexagram: HexagramInstance) {
     return resolveRelation(selfElement, targetElement);
   });
 }
-

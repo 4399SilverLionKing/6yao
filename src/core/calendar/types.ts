@@ -8,7 +8,7 @@ export interface BeijingDateTimeParts {
 
 export interface CalendarContext {
   inputDateTime: string;
-  timezone: "Asia/Shanghai";
+  timezone: 'Asia/Shanghai';
   solarDate: string;
   lunarDate: string;
   monthBranch: string;
@@ -16,4 +16,3 @@ export interface CalendarContext {
   dayXun: string;
   dayXunKong: string;
 }
-

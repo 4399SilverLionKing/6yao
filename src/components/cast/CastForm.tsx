@@ -1,82 +1,84 @@
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useState } from 'react';
 
-import { randomCast } from "../../core/divination/randomCast";
-import type { CoinThrowValue } from "../../types/divination";
-import { CoinThrowInput } from "./CoinThrowInput";
-import { RandomCastButton } from "./RandomCastButton";
+import { randomCast } from '../../core/divination/randomCast';
+import type { CoinThrowValue } from '../../types/divination';
+import { CoinThrowInput } from './CoinThrowInput';
+import { RandomCastButton } from './RandomCastButton';
 
 interface CastFormProps {
   onSubmit: (input: { throws: number[]; dateTime: string }) => void;
 }
 
 function defaultThrows() {
-  return Array.from({ length: 6 }, () => "");
+  return Array.from({ length: 6 }, () => '');
 }
 
 export function CastForm({ onSubmit }: CastFormProps) {
-  const [question, setQuestion] = useState("");
-  const [dateTime, setDateTime] = useState("");
+  const [question, setQuestion] = useState('');
+  const [dateTime, setDateTime] = useState('');
   const [throws, setThrows] = useState<string[]>(defaultThrows);
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   function updateThrow(index: number, value: string) {
-    setThrows((current) => {
+    setThrows(current => {
       const next = [...current];
       next[index] = value;
       return next;
     });
-    setError("");
+    setError('');
   }
 
   function applyRandomValues() {
     const values = randomCast();
     setThrows(values.map(String));
-    setError("");
+    setError('');
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (!dateTime) {
-      setError("请先填写起卦时间。");
+      setError('请先填写起卦时间。');
       return;
     }
 
-    if (throws.some((value) => value === "")) {
-      setError("请先完整填写六次投掷结果。");
+    if (throws.some(value => value === '')) {
+      setError('请先完整填写六次投掷结果。');
       return;
     }
 
-    const values = throws.map((value) => Number(value) as CoinThrowValue);
+    const values = throws.map(value => Number(value) as CoinThrowValue);
 
     onSubmit({
       throws: values,
-      dateTime
+      dateTime,
     });
   }
 
   return (
     <form className="space-y-6" onSubmit={handleSubmit}>
-      <label className="flex flex-col gap-2 rounded-3xl border border-ink/10 bg-white/50 p-5">
-        <span className="text-sm font-medium text-ink/80">占问内容</span>
+      <label className="border-ink/10 flex flex-col gap-2 rounded-3xl border bg-white/50 p-5">
+        <span className="text-ink/80 text-sm font-medium">占问内容</span>
         <textarea
-          className="min-h-28 rounded-2xl border border-ink/10 bg-parchment/80 px-4 py-3"
+          className="border-ink/10 bg-parchment/80 min-h-28 rounded-2xl border px-4 py-3"
           placeholder="例如：这个项目首版什么时候适合上线？"
           value={question}
-          onChange={(event) => setQuestion(event.target.value)}
+          onChange={event => setQuestion(event.target.value)}
         />
       </label>
 
-      <label className="flex flex-col gap-2 rounded-3xl border border-ink/10 bg-white/50 p-5">
-        <span className="text-sm font-medium text-ink/80">起卦时间（北京时间）</span>
+      <label className="border-ink/10 flex flex-col gap-2 rounded-3xl border bg-white/50 p-5">
+        <span className="text-ink/80 text-sm font-medium">
+          起卦时间（北京时间）
+        </span>
         <input
           aria-label="起卦时间"
-          className="rounded-2xl border border-ink/10 bg-parchment/80 px-4 py-3"
+          className="border-ink/10 bg-parchment/80 rounded-2xl border px-4 py-3"
           type="datetime-local"
           value={dateTime}
-          onChange={(event) => {
+          onChange={event => {
             setDateTime(event.target.value);
-            setError("");
+            setError('');
           }}
         />
       </label>
@@ -84,7 +86,7 @@ export function CastForm({ onSubmit }: CastFormProps) {
       <div className="flex items-center justify-between gap-4">
         <div>
           <h2 className="text-lg font-semibold">三枚铜钱起卦</h2>
-          <p className="text-sm text-ink/70">按自下而上顺序录入六次结果。</p>
+          <p className="text-ink/70 text-sm">按自下而上顺序录入六次结果。</p>
         </div>
         <RandomCastButton onGenerate={applyRandomValues} />
       </div>
@@ -95,7 +97,7 @@ export function CastForm({ onSubmit }: CastFormProps) {
             key={index}
             index={index}
             value={value}
-            onChange={(nextValue) => updateThrow(index, nextValue)}
+            onChange={nextValue => updateThrow(index, nextValue)}
           />
         ))}
       </div>
@@ -107,7 +109,7 @@ export function CastForm({ onSubmit }: CastFormProps) {
       ) : null}
 
       <button
-        className="rounded-full bg-ink px-6 py-3 text-sm font-medium text-parchment"
+        className="bg-ink text-parchment rounded-full px-6 py-3 text-sm font-medium"
         type="submit"
       >
         开始排盘

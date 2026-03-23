@@ -1,4 +1,4 @@
-import type { CoinThrowValue } from "../../types/divination";
+import type { CoinThrowValue } from '../../types/divination';
 
 const VALUES: CoinThrowValue[] = [6, 7, 8, 9];
 
@@ -9,4 +9,3 @@ export function randomCast(): CoinThrowValue[] {
     return VALUES[index];
   });
 }
-

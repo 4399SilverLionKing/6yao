@@ -5,7 +5,7 @@ interface RandomCastButtonProps {
 export function RandomCastButton({ onGenerate }: RandomCastButtonProps) {
   return (
     <button
-      className="rounded-full border border-ink/15 px-4 py-2 text-sm text-ink/80"
+      className="border-ink/15 text-ink/80 rounded-full border px-4 py-2 text-sm"
       type="button"
       onClick={onGenerate}
     >
@@ -13,4 +13,3 @@ export function RandomCastButton({ onGenerate }: RandomCastButtonProps) {
     </button>
   );
 }
-

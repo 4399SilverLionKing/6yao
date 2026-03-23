@@ -1,5 +1,5 @@
-import { SHI_YING_PATTERNS } from "../../data/shiYing";
-import type { HexagramInstance } from "../../types/hexagram";
+import { SHI_YING_PATTERNS } from '../../data/shiYing';
+import type { HexagramInstance } from '../../types/hexagram';
 
 export function getShiYing(hexagram: HexagramInstance) {
   if (hexagram.upperTrigram.id === hexagram.lowerTrigram.id) {
@@ -8,4 +8,3 @@ export function getShiYing(hexagram: HexagramInstance) {
 
   return SHI_YING_PATTERNS.different;
 }
-

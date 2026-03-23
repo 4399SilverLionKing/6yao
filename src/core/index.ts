@@ -1,1 +1,1 @@
-export { computeChartResult } from "./formatter/formatChartResult";
+export { computeChartResult } from './formatter/formatChartResult';

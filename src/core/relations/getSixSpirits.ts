@@ -1,4 +1,4 @@
-import { SIX_SPIRITS } from "../../data/sixSpirits";
+import { SIX_SPIRITS } from '../../data/sixSpirits';
 
 export function getSixSpirits(startIndex = 0) {
   return Array.from({ length: 6 }, (_, index) => {
@@ -7,4 +7,3 @@ export function getSixSpirits(startIndex = 0) {
     return SIX_SPIRITS[spiritIndex];
   });
 }
-

@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -8,7 +8,7 @@
   /* project palette */
   color: #1f1d1a;
   background: #f7f1e3;
-  font-family: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+  font-family: 'Noto Serif SC', 'Source Han Serif SC', 'Songti SC', serif;
 
   /* shadcn semantic tokens — mapped to ink / parchment / moss / clay / gold */
   --background: #f7f1e3;

@@ -1,10 +1,14 @@
-import { Outlet, createBrowserRouter, type RouteObject } from "react-router-dom";
+import {
+  Outlet,
+  type RouteObject,
+  createBrowserRouter,
+} from 'react-router-dom';
 
-import { AppShell } from "../components/layout/AppShell";
-import { CastPage } from "../pages/CastPage";
-import { HomePage } from "../pages/HomePage";
-import { NotFoundPage } from "../pages/NotFoundPage";
-import { ResultPage } from "../pages/ResultPage";
+import { AppShell } from '../components/layout/AppShell';
+import { CastPage } from '../pages/CastPage';
+import { HomePage } from '../pages/HomePage';
+import { NotFoundPage } from '../pages/NotFoundPage';
+import { ResultPage } from '../pages/ResultPage';
 
 function RootLayout() {
   return (
@@ -16,28 +20,27 @@ function RootLayout() {
 
 export const routes: RouteObject[] = [
   {
-    path: "/",
+    path: '/',
     element: <RootLayout />,
     children: [
       {
         index: true,
-        element: <HomePage />
+        element: <HomePage />,
       },
       {
-        path: "cast",
-        element: <CastPage />
+        path: 'cast',
+        element: <CastPage />,
       },
       {
-        path: "result",
-        element: <ResultPage />
+        path: 'result',
+        element: <ResultPage />,
       },
       {
-        path: "*",
-        element: <NotFoundPage />
-      }
-    ]
-  }
+        path: '*',
+        element: <NotFoundPage />,
+      },
+    ],
+  },
 ];
 
 export const router = createBrowserRouter(routes);
-

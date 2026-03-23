@@ -1,11 +1,14 @@
-import { SHI_POSITIONS, PALACE_SEQUENCE_PATTERNS } from "../../data/zengshan/shiYing";
-import { TRIGRAM_NA_JIA } from "../../data/zengshan/naJia";
-import { TRIGRAMS } from "../../data/trigrams";
-import type { HexagramInstance } from "../../types/hexagram";
-import type { LinePolarity, NormalizedLine } from "../../types/divination";
+import { TRIGRAMS } from '../../data/trigrams';
+import { TRIGRAM_NA_JIA } from '../../data/zengshan/naJia';
+import {
+  PALACE_SEQUENCE_PATTERNS,
+  SHI_POSITIONS,
+} from '../../data/zengshan/shiYing';
+import type { LinePolarity, NormalizedLine } from '../../types/divination';
+import type { HexagramInstance } from '../../types/hexagram';
 
 function flipLine(line: LinePolarity): LinePolarity {
-  return line === "yang" ? "yin" : "yang";
+  return line === 'yang' ? 'yin' : 'yang';
 }
 
 function applyPattern(
@@ -22,15 +25,15 @@ function applyPattern(
 }
 
 function toNormalizedLines(lines: LinePolarity[]): NormalizedLine[] {
-  return lines.map((polarity) => ({
-    throwValue: polarity === "yang" ? 7 : 8,
+  return lines.map(polarity => ({
+    throwValue: polarity === 'yang' ? 7 : 8,
     polarity,
-    moving: false
+    moving: false,
   }));
 }
 
 export function buildPurePalaceLines(palace: string) {
-  const trigram = TRIGRAMS.find((item) => item.id === palace);
+  const trigram = TRIGRAMS.find(item => item.id === palace);
 
   if (!trigram) {
     throw new Error(`Unknown palace trigram: ${palace}`);
@@ -41,7 +44,7 @@ export function buildPurePalaceLines(palace: string) {
 
 export interface PalaceInfo {
   palace: string;
-  palaceElement: (typeof TRIGRAM_NA_JIA)[keyof typeof TRIGRAM_NA_JIA]["palaceElement"];
+  palaceElement: (typeof TRIGRAM_NA_JIA)[keyof typeof TRIGRAM_NA_JIA]['palaceElement'];
   shi: number;
   ying: number;
   sequenceIndex: number;
@@ -69,7 +72,7 @@ export function resolvePalaceInfo(hexagram: HexagramInstance): PalaceInfo {
           ying,
           sequenceIndex,
           pureLines,
-          normalizedPureLines: toNormalizedLines(pureLines)
+          normalizedPureLines: toNormalizedLines(pureLines),
         };
       }
     }
@@ -83,4 +86,3 @@ export function getFormalShiYing(hexagram: HexagramInstance) {
 
   return { palace, shi, ying };
 }
-
