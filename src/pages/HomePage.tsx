@@ -1,14 +1,11 @@
 import { Link } from 'react-router-dom';
 
-import { buttonVariants } from '@/components/ui/button';
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
 
 const features = [
   { title: '铜钱起卦', desc: '模拟三枚铜钱，逐爻手动输入正反面' },
@@ -44,7 +41,7 @@ export function HomePage() {
           <Card
             key={f.title}
             size="sm"
-            className="w-full max-w-[14rem] border-none bg-transparent shadow-none ring-0"
+            className="w-full max-w-56 border-none bg-transparent shadow-none ring-0"
           >
             <CardHeader className="items-center text-center">
               <CardTitle className="font-semibold">{f.title}</CardTitle>
