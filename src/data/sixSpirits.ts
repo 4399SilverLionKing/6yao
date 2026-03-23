@@ -1,0 +1,2 @@
+export const SIX_SPIRITS = ["青龙", "朱雀", "勾陈", "腾蛇", "白虎", "玄武"] as const;
+
