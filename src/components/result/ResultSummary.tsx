@@ -11,8 +11,8 @@ export function ResultSummary({ result }: ResultSummaryProps) {
         <p className="text-moss text-sm tracking-[0.3em] uppercase">结果</p>
         <h1 className="text-3xl font-semibold">排盘结果</h1>
         <p className="text-ink/75 max-w-2xl">
-          本卦为 {result.originalHexagram.name}，变卦为{' '}
-          {result.changedHexagram.name}， 动爻位于第{' '}
+          本卦为 {result.originalHexagram.fullName}，变卦为{' '}
+          {result.changedHexagram.fullName}， 动爻位于第{' '}
           {result.movingLines.join('、') || '无'} 爻。
         </p>
       </section>

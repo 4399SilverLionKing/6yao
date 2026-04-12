@@ -11,6 +11,9 @@ export interface TrigramDefinition {
 export interface HexagramDefinition {
   id: string;
   name: string;
+  fullName: string;
+  meaning: string;
+  sequence: number;
   upperTrigramId: string;
   lowerTrigramId: string;
   lines: LinePolarity[];

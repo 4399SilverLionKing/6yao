@@ -32,10 +32,16 @@ export interface ChartResult {
   dayXunKong: string;
   movingLines: number[];
   lines: ChartLine[];
+  changedLines: ChartLine[];
   hiddenLines: HiddenChartLine[];
   sixRelations: string[];
   sixSpirits: string[];
   shiYing: {
+    palace?: string;
+    shi: number;
+    ying: number;
+  };
+  changedShiYing: {
     palace?: string;
     shi: number;
     ying: number;

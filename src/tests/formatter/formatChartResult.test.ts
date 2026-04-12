@@ -21,6 +21,11 @@ test("computes a complete chart result object", () => {
   expect(result.lines[0].branch).toBeTruthy();
   expect(result.shiYing.shi).not.toBe(result.shiYing.ying);
   expect(result.hiddenLines).toBeDefined();
+  expect((result as { changedLines?: unknown[] }).changedLines).toHaveLength(6);
+  expect((result as { changedLines?: Array<{ branch?: string; relation?: string }> }).changedLines?.[0]?.branch).toBeTruthy();
+  expect((result as { changedShiYing?: { shi: number; ying: number } }).changedShiYing?.shi).not.toBe(
+    (result as { changedShiYing?: { shi: number; ying: number } }).changedShiYing?.ying
+  );
 });
 
 test.each(FORMAL_CHART_CASES)(

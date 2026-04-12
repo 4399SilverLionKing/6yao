@@ -24,9 +24,15 @@ export function computeChartResult(input: ComputeChartInput): ChartResult {
   const calendar = buildCalendarContext(input.dateTime);
   const movingLines = getMovingLines(normalizedLines);
   const naJiaLines = buildNaJiaLines(originalHexagram);
+  const changedNaJiaLines = buildNaJiaLines(changedHexagram);
   const sixRelations = getFormalSixRelations(originalHexagram, naJiaLines);
+  const changedSixRelations = getFormalSixRelations(
+    changedHexagram,
+    changedNaJiaLines
+  );
   const sixSpirits = getFormalSixSpirits(calendar.dayGanzhi);
   const shiYing = getFormalShiYing(originalHexagram);
+  const changedShiYing = getFormalShiYing(changedHexagram);
   const hiddenLines = buildHiddenLines(originalHexagram);
 
   return {
@@ -49,10 +55,23 @@ export function computeChartResult(input: ComputeChartInput): ChartResult {
       isShi: shiYing.shi === index + 1,
       isYing: shiYing.ying === index + 1,
     })),
+    changedLines: changedHexagram.normalizedLines.map((line, index) => ({
+      ...line,
+      position: index + 1,
+      stem: changedNaJiaLines[index].stem,
+      branch: changedNaJiaLines[index].branch,
+      element: changedNaJiaLines[index].element,
+      ganzhi: changedNaJiaLines[index].ganzhi,
+      relation: changedSixRelations[index],
+      spirit: sixSpirits[index],
+      isShi: changedShiYing.shi === index + 1,
+      isYing: changedShiYing.ying === index + 1,
+    })),
     hiddenLines,
     sixRelations,
     sixSpirits,
     shiYing,
+    changedShiYing,
     meta: {
       generatedAt: new Date().toISOString(),
     },
