@@ -24,6 +24,7 @@ export interface HiddenChartLine {
 }
 
 export interface ChartResult {
+  question: string;
   originalHexagram: HexagramInstance;
   changedHexagram: HexagramInstance;
   calendar: CalendarContext;

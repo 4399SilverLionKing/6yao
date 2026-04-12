@@ -8,12 +8,9 @@ export function ResultSummary({ result }: ResultSummaryProps) {
   return (
     <div className="grid gap-4 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
       <section className="border-ink/10 space-y-3 rounded-3xl border bg-white/60 p-5">
-        <p className="text-moss text-sm tracking-[0.3em] uppercase">结果</p>
-        <h1 className="text-3xl font-semibold">排盘结果</h1>
+        <h2 className="text-lg font-semibold">占问内容</h2>
         <p className="text-ink/75 max-w-2xl">
-          本卦为 {result.originalHexagram.fullName}，变卦为{' '}
-          {result.changedHexagram.fullName}， 动爻位于第{' '}
-          {result.movingLines.join('、') || '无'} 爻。
+          {result.question || '未填写占问内容'}
         </p>
       </section>
 

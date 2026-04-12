@@ -15,6 +15,7 @@ import {
 export interface ComputeChartInput {
   throws: readonly number[];
   dateTime: string;
+  question: string;
 }
 
 export function computeChartResult(input: ComputeChartInput): ChartResult {
@@ -36,6 +37,7 @@ export function computeChartResult(input: ComputeChartInput): ChartResult {
   const hiddenLines = buildHiddenLines(originalHexagram);
 
   return {
+    question: input.question,
     originalHexagram,
     changedHexagram,
     calendar,

@@ -6,7 +6,8 @@ import { FORMAL_CHART_CASES } from "../fixtures/formal-chart-cases";
 test("computes a complete chart result object", () => {
   const result = computeChartResult({
     throws: [7, 8, 8, 6, 7, 9],
-    dateTime: "2026-03-23T10:30"
+    dateTime: "2026-03-23T10:30",
+    question: "这个项目首版什么时候适合上线？"
   });
 
   expect(result.originalHexagram.name).toBeTruthy();
@@ -21,6 +22,7 @@ test("computes a complete chart result object", () => {
   expect(result.lines[0].branch).toBeTruthy();
   expect(result.shiYing.shi).not.toBe(result.shiYing.ying);
   expect(result.hiddenLines).toBeDefined();
+  expect(result.question).toBe("这个项目首版什么时候适合上线？");
   expect((result as { changedLines?: unknown[] }).changedLines).toHaveLength(6);
   expect((result as { changedLines?: Array<{ branch?: string; relation?: string }> }).changedLines?.[0]?.branch).toBeTruthy();
   expect((result as { changedShiYing?: { shi: number; ying: number } }).changedShiYing?.shi).not.toBe(
@@ -31,7 +33,7 @@ test("computes a complete chart result object", () => {
 test.each(FORMAL_CHART_CASES)(
   "matches formal regression fixture: $name",
   ({ input, expected }) => {
-    const result = computeChartResult(input);
+    const result = computeChartResult({ ...input, question: "测试占问" });
 
     expect(result.monthBranch).toBe(expected.monthBranch);
     expect(result.dayGanzhi).toBe(expected.dayGanzhi);
@@ -45,5 +47,6 @@ test.each(FORMAL_CHART_CASES)(
         expected.hiddenLines.map((line) => expect.objectContaining(line))
       )
     );
+    expect(result.question).toBe("测试占问");
   }
 );

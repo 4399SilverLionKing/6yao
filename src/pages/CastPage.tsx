@@ -7,7 +7,11 @@ import { saveResult } from '../lib/resultStore';
 export function CastPage() {
   const navigate = useNavigate();
 
-  function handleSubmit(input: { throws: number[]; dateTime: string }) {
+  function handleSubmit(input: {
+    throws: number[];
+    dateTime: string;
+    question: string;
+  }) {
     const result = computeChartResult(input);
 
     saveResult(result);

@@ -6,7 +6,7 @@ import { CoinThrowInput } from './CoinThrowInput';
 import { RandomCastButton } from './RandomCastButton';
 
 interface CastFormProps {
-  onSubmit: (input: { throws: number[]; dateTime: string }) => void;
+  onSubmit: (input: { throws: number[]; dateTime: string; question: string }) => void;
 }
 
 function defaultThrows() {
@@ -52,6 +52,7 @@ export function CastForm({ onSubmit }: CastFormProps) {
     onSubmit({
       throws: values,
       dateTime,
+      question,
     });
   }
 
